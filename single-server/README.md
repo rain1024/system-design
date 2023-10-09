@@ -1,6 +1,6 @@
 # Single Server
 
-```mermaid
+```mermaidjs
 graph LR
     subgraph User
         WB[Web Browser]
