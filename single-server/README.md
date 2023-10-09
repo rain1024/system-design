@@ -6,4 +6,7 @@ graph LR
         WB[Web Browser]
         MA[Mobile App]
     end
+
+    User -->|api.mysite.com| Server
+    User -->|mysite.com| Server
 ```
