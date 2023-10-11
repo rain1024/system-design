@@ -1,6 +1,8 @@
 # Single Server
 
-```mermaid
+![](system-design.png)
+
+```
 graph LR
     style User fill:#FFC107,stroke:#333,stroke-width:2px
     style WB fill:#FFA000,stroke:#333,stroke-width:1px
