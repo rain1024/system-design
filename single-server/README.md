@@ -1,5 +1,7 @@
 # Single Server
 
+System Design
+
 ![](system-design.png)
 
 ```
@@ -31,3 +33,26 @@ graph LR
         D[DNS Server]
     end
 ```
+
+# Build and Deploy
+
+```
+skaffold run -f single-server/single-server/skaffold.yaml -p dev
+
+skaffold run --cache-artifacts=false -f single-server/single-server/skaffold.yaml -p dev
+skaffold run --no-prune=false --cache-artifacts=false -f single-server/single-server/skaffold.yaml -p dev
+skaffold delete -f single-server/single-server/skaffold.yaml
+```
+
+```
+curl $(minikube ip):31731
+Hello
+```
+
+Monitor 
+
+```
+kubectl get pods
+kubectl get services
+```
+

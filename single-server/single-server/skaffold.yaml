@@ -1,0 +1,31 @@
+apiVersion: skaffold/v2beta20  # This version might vary depending on your Skaffold version
+kind: Config
+metadata:
+  name: hello-world
+build:
+  artifacts:
+  - image: web-001
+    context: single-server/docker-images/web-001
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  helm:
+    releases:
+    - name: single-server
+      chartPath: single-server/single-server
+      valuesFiles:
+      - single-server/single-server/values.yaml
+      setValues:
+        replicaCount: 1  
+        image.repository: web-001
+        image.pullPolicy: IfNotPresent
+      namespace: default  
+      createNamespace: true  
+profiles:  
+  - name: dev
+    build:
+      artifacts:
+      - image: web-001
+        context: single-server/docker-images/web-001
+        docker:
+          dockerfile: Dockerfile
