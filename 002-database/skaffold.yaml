@@ -1,0 +1,53 @@
+apiVersion: skaffold/v2beta20
+kind: Config
+metadata:
+  name: database
+build:
+  artifacts:
+  - image: web-001
+    context: build-contexts/frontend
+    docker:
+      dockerfile: Dockerfile
+  - image: database-001
+    context: build-contexts/database
+    docker:
+      dockerfile: Dockerfile
+  - image: backend-001
+    context: build-contexts/backend
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  helm:
+    releases:
+    - name: litebase-frontend
+      chartPath: helm-charts/frontend
+      valuesFiles:
+      - helm-charts/frontend/values.yaml
+      setValues:
+        replicaCount: 1  
+        image.repository: web-001
+        image.pullPolicy: IfNotPresent
+      namespace: default  
+      createNamespace: true  
+    - name: litebase-database
+      chartPath: helm-charts/database
+      valuesFiles:
+      - helm-charts/database/values.yaml
+      setValues:
+        replicaCount: 1  
+        image.repository: database-001
+        image.pullPolicy: IfNotPresent
+      namespace: default  
+      createNamespace: true  
+    - name: litebase-backend
+      chartPath: helm-charts/backend
+      valuesFiles:
+      - helm-charts/backend/values.yaml
+      setValues:
+        replicaCount: 1  
+        image.repository: backend-001
+        image.pullPolicy: IfNotPresent
+      namespace: default  
+      createNamespace: true  
+profiles:  
+  - name: dev
