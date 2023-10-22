@@ -14,7 +14,7 @@ I create a simple minukube cluster and deploy a simple single server app to it. 
 
 Day 2: Yay! nginx server is running.
 
-# Day 3-: 002 Database - LiteBase App
+# Day 3-12: 002 Database - LiteBase App
 
 Day 3: I move to the next section of chapter 1, which is about database. Now I must create two services, one for the database and one for the web server.
 
@@ -26,4 +26,12 @@ kubectl get all -l app=litebase
 
 I create a django app to connect to the database.
 
-Day 6: I create a django app to connect to the database. I am able to connect to the database from the django app.
+Day 6-8: I create a django app to connect to the database. I am able to connect to the database from the django app.
+
+I build dockerfile to build the django app. I am able to build the docker image and run the container.
+
+Day 9-11: I have some issues with setup deployment for the django app. I can't run the skaffold command to deploy the django app. It's because I use the default template for the django app, which is too complicated for me. I decide to use a simple template for the django app.
+
+Day 11-12: The backend service is finally connect to the database. I use env variables to pass database information to the backend service.
+
+Yay! The litebase app is finished. I learn a lot about kubenetes and skaffold.
