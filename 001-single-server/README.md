@@ -41,7 +41,7 @@ skaffold run -f single-server/single-server/skaffold.yaml -p dev
 
 skaffold run --cache-artifacts=false -f single-server/single-server/skaffold.yaml -p dev
 skaffold run --no-prune=false --cache-artifacts=false -f single-server/single-server/skaffold.yaml -p dev
-skaffold delete -f single-server/single-server/skaffold.yaml
+skaffold delete -f 001-single-server/single-server/skaffold.yaml
 ```
 
 ```
