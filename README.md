@@ -8,4 +8,5 @@ Thank you for choosing our tutorial as your starting point in the vast world of 
 
 ## Projects 
 
-- [Single server](single-server/README.md)
+- [1. Single server](001-single-server/README.md)
+- [2. Database](002-database/README.md)

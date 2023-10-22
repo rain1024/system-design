@@ -1,0 +1,22 @@
+replicaCount: 1
+
+name: backend
+image:
+  repository: backend-001
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 8000
+  nodePort: 30009
+
+container:
+  portName: http
+  port: 8000
+
+resources: {}
+
+app: litebase
+
+env:
+  DB_HOST: database
